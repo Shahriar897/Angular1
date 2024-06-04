@@ -1,0 +1,135 @@
+<h3>Home Table</h3>
+<div>
+  <h1>Search Person List:{{searchPersonList}} </h1>
+  <p></p>
+</div>
+<div class="row">
+  <div class="form-outline">
+  <div class="input-group">
+      <span class="input-group-text" id="">Your Name</span>
+      <input type="text" id="search" [value]="searchText" (input)="searchKey($event)" placeholder="Search by name"
+      />
+      <button class="btn btn-info mr-3" (click)="searchKey($event)">Search</button>
+  </div>
+    <br>
+
+    <button class="btn btn-sm btn-info" (click)="toggleFilter()">Filter</button>
+    <div class="row" [hidden]= "isShow">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Name</h5>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Father's Name</h5>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Mother's Name</h5>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Address</h5>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Phone</h5>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Email</h5>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="table-responsive">
+        <table border="1px" height="10000px" class="table table-striped-columns table-hover ">
+          <thead>
+            <th>No. </th>
+            <th>Name</th>
+            <th>Father's Name</th>
+            <th>Mother's Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+
+          </thead>
+
+          <tbody class="table-responsive">
+              <tr height="100px" *ngFor="let person of personList">
+                <td width="100px">{{person.id}}</td>
+                <td>{{person.name}}</td>
+                <td>{{person.fatherName}}</td>
+                <td>{{person.motherName}}</td>
+                <td>{{person.address}}</td>
+                <td>{{person.phone}}</td>
+                <td>{{person.email}}</td>
+
+            </tr>
+          </tbody>
+
+        </table>
+    </div>
+      </div>
+
+</div>
+

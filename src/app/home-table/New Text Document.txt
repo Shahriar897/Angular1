@@ -1,0 +1,60 @@
+ randomFirstNameGenerator()
+  {
+    const firstNameList = ["Aaran", "Aaren", "Aarez", "Aarman", "Aaron", "Aaron-James", "Aarron", "Aaryan", "Aaryn", "Aayan", "Aazaan", "Abaan", "Abbas", "Abdallah", "Abdalroof", "Abdihakim", "Abdirahman", "Abdisalam", "Abdul", "Abdul-Aziz", "Abdulbasir", "Abdulkadir", "Abdulkarem", "Abdulkhader", "Abdullah", "Abdul-Majeed", "Abdulmalik", "Abdul-Rehman", "Abdur", "Abdurraheem", "Abdur-Rahman", "Abdur-Rehmaan", "Abel", "Abhinav", "Abhisumant", "Abid", "Abir", "Abraham", "Abu", "Abubakar", "Ace", "Adain", "Adam", "Adam-James", "Addison", "Addisson", "Adegbola", "Adegbolahan", "Aden", "Adenn", "Adie", "Adil", "Aditya", "Adnan", "Adrian", "Adrien", "Aedan", "Aedin", "Aedyn", "Aeron", "Afonso", "Ahmad", "Ahmed", "Ahmed-Aziz", "Ahoua", "Ahtasham", "Aiadan", "Aidan", "Aiden", "Aiden-Jack", "Aiden-Vee", "Aidian", "Aidy", "Ailin", "Aiman", "Ainsley", "Ainslie", "Airen", "Airidas", "Airlie", "AJ", "Ajay", "A-Jay", "Ajayraj", "Akan", "Akram", "Al", "Ala", "Alan", "Alanas", "Alasdair", "Alastair", "Alber", "Albert", "Albie", "Aldred", "Alec", "Aled", "Aleem", "Aleksandar","Aleksander", "Aleksandr", "Aleksandrs", "Alekzander", "Alessandro", "Alessio", "Alex", "Alexander", "Alexei", "Alexx", "Alexzander", "Alf", "Alfee", "Alfie", "Alfred", "Alfy", "Alhaji", "Al-Hassan", "Ali", "Aliekber", "Alieu", "Alihaider", "Alisdair", "Alishan", "Alistair", "Alistar", "Alister", "Aliyaan", "Allan", "Allan-Laiton", "Allen", "Allesandro", "Allister", "Ally", "Alphonse", "Altyiab", "Alum", "Alvern"]
+    let firstName =  firstNameList[Math.floor(Math.random()*firstNameList.length)];
+    return firstName;
+  }
+  randomLastNameGenerator()
+  {
+    const lastNameList =["Bocook", "Bocskor", "Boczar", "Boda", "Bodah", "Bodak", "Bodamer", "Bodary", "Boday", "Bodda", "Boddeker", "Bodden", "Boddie", "Boddorf", "Boddy", "Bode", "Bodell", "Bodelson", "Bodemann", "Boden", "Bodenhagen", "Bodenhamer", "Bodenheimer", "Bodenschatz", "Bodenstein", "Bodensteiner", "Boderick", "Bodey", "Bodfish", "Bodford", "Bodi", "Bodie", "Bodiford", "Bodily", "Bodin", "Bodine", "Bodiroga", "Bodison", "Bodkin", "Bodkins", "Bodle", "Bodley", "Bodman", "Bodnar", "Bodner", "Bodo", "Bodon", "Bodor", "Bodovsky", "Bodreau", "Bodrey", "Bodrick", "Bodway", "Bodwell", "Bodwin", "Body", "Bodyfelt", "Bodziony", "Boe", "Boebinger", "Boeck", "Boecker", "Boeckmann", "Boeckx", "Boedecker", "Boedeker", "Boeding", "Boege", "Boegel", "Boeger", "Boeh", "Boehl", "Boehlar", "Boehle", "Boehler", "Boehlke", "Boehm", "Boehman", "Boehme", "Boehmer", "Boehmke", "Boehne", "Boehner", "Boehning", "Boehnke", "Boehnlein", "Boehringer", "Boeke", "Boekelman", "Boeken", "Boekhout", "Boele", "Boelk", "Boelke", "Boelsche", "Boelter", "Boemer", "Boemig", "Boen", "Boender", "Boeneke", "Boenig", "Boening", "Boenisch", "Boensch", "Boepple", "Boer", "Boera", "Boerboom", "Boerger", "Boeri", "Boerm", "Boerma", "Boerner", "Boero", "Boers", "Boersma", "Boerst", "Boerstler", "Boes", "Boesch", "Boese", "Boesel", "Boesen", "Boesenberg", "Boesenhofer", "Boeser", "Boeshore", "Boesiger", "Boeson", "Boespflug", "Boetcher", "Boettcher", "Boettger", "Boettner", "Boeve", "Boever", "Boevers", "Boeving", "Boey", "Boffa", "Bofinger", "Boga", "Bogacki", "Bogacz", "Bogaert", "Bogan", "Bogany", "Bogar", "Bogard", "Bogardus", "Bogart", "Bogatay", "Bogatitus", "Bogda", "Bogdan", "Bogdanovich", "Bogdanski", "Bogden", "Bogdon", "Boge", "Bogel", "Bogema", "Bogen", "Bogenschneide", "Bogenschutz", "Boger", "Bogert", "Bogg", "Boggan", "Boggess", "Boggi", "Boggiano", "Boggio", "Boggioni", "Boggs", "Bogguess", "Boggus", "Bogh", "Boghosian", "Boghossian", "Bogie", "Bogin", "Bogle", "Boglioli", "Bognar", "Bogner", "Bognuda", "Bogosh", "Bogren", "Bogucki", "Bogue", "Bogumil", "Bogus", "Bogust", "Bogut", "Bohac", "Bohall", "Boham", "Bohan", "Bohanan", "Bohannan", "Bohannon", "Bohanon", "Bohart", "Bohaty", "Bohinc", "Bohl", "Bohland", "Bohlander", "Bohlen", "Bohler", "Bohley", "Bohlig", "Bohling", "Bohlinger", "Bohlke", "Bohlken", "Bohlman", "Bohlmann", "Bohlsen", "Bohm", "Bohman", "Bohmann", "Bohmer", "Bohmker", "Bohn", "Bohne", "Bohnen", "Bohnenblust", "Bohnenkamp", "Bohner", "Bohnert", "Bohnet", "Bohney", "Bohnker", "Bohnsack", "Boho", "Bohol", "Bohon", "Bohonik", "Bohorquez", "Bohr", "Bohren", "Bohrer", "Bohringer", "Bohrman", "Bohrn", "Bohs", "Boiani", "Boice", "Boid", "Boie", "Boies", "Boike", "Boilard", "Boileau", "Boiles", "Boillot", "Boin", "Bois", "Boisclair", "Boise", "Boisen", "Boiser", "Boisjolie", "Boislard", "Boisse", "Boisseau", "Boisselle", "Boissoneault", "Boissonnault", "Boissonneault", "Boissy", "Boisuert", "Boisvert", "Boitel", "Boitnott", "Boivin", "Bojanowski", "Boje", "Bojko", "Bojorquez", "Bok", "Bokal", "Bokanovich", "Boken", "Boker", "Boklund", "Bokman", "Bokor", "Bolado", "Bolan", "Boland", "Bolander", "Bolanos", "Bolante", "Bolar", "Bolay", "Bolch", "Bold", "Bolda", "Bolde", "Bolden", "Boldenow", "Bolder", "Boldery", "Boldin", "Bolding", "Boldizsar", "Boldman", "Boldon", "Boldosser", "Boldrin", "Bolds", "Boldt", "Bolduan", "Bolduc", "Boldue", "Boldul", "Boldwyn", "Bole", "Bolebruch", "Bolejack", "Bolek", "Bolen", "Bolenbaugh", "Bolender", "Boler", "Bolerjack", "Boles", "Bolevice", "Boleware", "Boley", "Boleyn", "Bolf", "Bolfa", "Bolger", "Bolian", "Bolich", "Bolick", "Boliek", "Bolieu", "Bolig", "Bolin", "Bolinder", "Boline", "Boling", "Bolinger", "Bolins", "Bolinsky", "Bolio", "Bolitho", "Bolivar", "Boliver", "Bolk", "Bolka", "Boll", "Bolla", "Bollacker", "Bollaert", "Bolland", "Bollard", "Bollbach", "Bollen", "Bollens", "Boller", "Bolles", "Bollettino", "Bollich", "Bollie", "Bollier", "Bollig", "Bolliger", "Bollin", "Bolling", "Bollinger", "Bollis", "Bollman", "Bollom", "Bollozos", "Bolls", "Bolman", "Bolner", "Bolnick", "Bologna", "Bolognese", "Bolognia", "Bolon", "Bolorin", "Bolser", "Bolstad", "Bolster", "Bolt", "Bolte", "Bolten", "Bolter", "Boltinghouse", "Bolton", "Boltz", "Boluda", "Bolus", "Bolvin", "Bolyard", "Bolz", "Boman", "Bomar", "Bomaster", "Bomba", "Bombaci", "Bombard", "Bombardier", "Bomberger", "Bombich", "Bombino", "Bomer", "Bomgardner", "Bomia", "Bomilla", "Bomkamp", "Bommarito", "Bommer", "Bompane", "Bompiani", "Bomstad", "Bomzer", "Bon", "Bona", "Bonacci", "Bonaccorsi", "Bonaccorso", "Bonadio", "Bonadona", "Bonadonna", "Bonadurer", "Bonaguidi", "Bonagurio", "Bonalumi", "Bonam", "Bonamico", "Bonamo", "Bonanni", "Bonanno", "Bonano", "Bonapart", "Bonaparte", "Bonar", "Bonardi", "Bonas", "Bonasera", "Bonato", "Bonatti", "Bonaventura", "Bonaventure", "Bonavia", "Bonavita", "Bonawitz", "Boncella", "Bond", "Bonda", "Bondanza", "Bonde", "Bonder", "Bondi", "Bondoc", "Bondre", "Bondroff", "Bonds", "Bondura", "Bondurant", "Bondy", "Bone", "Bonebrake", "Bonebright", "Bonefield", "Bonefont", "Bonelli", "Bonello", "Bonenberger", "Bonenfant", "Bonepart", "Boner", "Bones", "Boness", "Bonesteel", "Bonet", "Boneta", "Bonett", "Bonetti", "Bonetto", "Boney", "Bonfield", "Bonfiglio", "Bong", "Bonga", "Bongard", "Bongartz", "Bonge", "Bongers", "Bongiardina", "Bongio", "Bongiorno", "Bongiovanni", "Bongivengo", "Bongle", "Bongo", "Bonham", "Bonhomme", "Boni", "Boniello", "Bonier", "Boniface", "Bonifacio", "Bonifant", "Bonifay", "Bonifer", "Bonifield", "Bonilla", "Bonillas", "Bonillo", "Bonin", "Bonina", "Bonine", "Boning", "Bonini", "Bonino", "Boniol", "Bonita", "Bonito", "Bonjorno", "Bonjour", "Bonk", "Bonker", "Bonkowski", "Bonn", "Bonne", "Bonneau", "Bonnel", "Bonnell", "Bonnema", "Bonnenfant", "Bonner", "Bonnes", "Bonnet", "Bonnett", "Bonnette", "Bonneville", "Bonney", "Bonnick", "Bonnie", "Bonnifield", "Bonnin", "Bonning", "Bonniwell", "Bonnlander", "Bonno", "Bonnoitt", "Bonnot", "Bonny", "Bono", "Bonomi", "Bonomini", "Bonomo", "Bonow", "Bonsal", "Bonsall", "Bonsee", "Bonsell", "Bonser", "Bonsey", "Bonsignore", "Bonson", "Bonsu", "Bonte", "Bontempo", "Bontemps", "Bonton"]
+    let lastName =  lastNameList[Math.floor(Math.random()*lastNameList.length)];
+    return lastName;
+  }
+  randomNameGenerator(){
+    let firstName = this.randomFirstNameGenerator();
+    let lastName = this.randomLastNameGenerator();
+    let fullName = `${firstName} ${lastName}`;
+    return fullName;
+  }
+  randomEmailProviderGenerator()
+  {
+    const emailList = ['gmail.com','yahoo.com','datasoft.com','edu.com'];
+    let emailExt =  emailList[Math.floor(Math.random()*emailList.length)];
+    return emailExt;
+  }
+  randomAddressGenerator()
+  {
+    const locationList = ["Barbar (Bahrain)","Jurdab (Bahrain)","Madinat Isa (Bahrain)","Madinat Hamad (Bahrain)","Manama (Bahrain)","Oil City (Bahrain)","Sanabis (Bahrain)","Sanad (Bahrain)","Sitrah (Bahrain)","Tubli (Bahrain)","Bangladesh","Agrabad (Bangladesh)","Bangla (Bangladesh)","Barisal (Bangladesh)","Bazar (Bangladesh)","Chittagong (Bangladesh)","Comilla (Bangladesh)","Delta (Bangladesh)","Dhaka (Bangladesh)","Hossain (Bangladesh)","Jessore (Bangladesh)","Kabi (Bangladesh)","Kazipur (Bangladesh)","Mymensingh (Bangladesh)","Narayanganj (Bangladesh)","Rajshahi (Bangladesh)","Tejgaon (Bangladesh)","Uttara (Bangladesh)","Barbados","Atlantic Shores (Barbados)","Bagatelle (Barbados)","Bloomsbury (Barbados)","Bridgetown (Barbados)","Bruce Vale (Barbados)","Cave Hill (Barbados)","Clapham (Barbados)","Hastings (Barbados)"];
+    let pickLocation = locationList[Math.floor(Math.random()*locationList.length)];
+    return pickLocation;
+  }
+  randomPhoneNumberGenerator()
+  {
+    const digitList = ["0","1","2","3","4","5","6","7","8","9"];
+    let number = "+880";
+    for(let i = 0;i<10;i++)
+      {
+        number = `${number}${digitList[Math.floor(Math.random()*digitList.length)]}`
+      }
+      return number;
+  }
+
+  persons: {id:number,name:string,fatherName:string,motherName:string,address:string,phone:string;email:string}[] = [];
+
+  populateData(n: number){
+    for(let i = 1; i<= n; i++)
+      {
+        let person = {
+          id : i,
+          name : this.randomNameGenerator(),
+          fatherName : this.randomNameGenerator(),
+          motherName: this.randomNameGenerator(),
+          address: this.randomAddressGenerator(),
+          phone : this.randomPhoneNumberGenerator(),
+          email: "",
+        }
+        person.email = `${person.name}@${this.randomEmailProviderGenerator()}`;
+        this.persons.push(person);
+      }
+      return this.persons;
+  }

@@ -1,0 +1,7 @@
+.table-responsive{
+  max-height: 10000px;
+}
+th{
+  position: sticky;
+  top:0;
+}

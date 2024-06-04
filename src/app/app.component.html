@@ -1,0 +1,34 @@
+
+
+<div class="container">
+  <div class="row">
+    <div [style.background-color]="color" [class]="col">
+      <img [src]="image" alt="" height="250px" width="250px">
+    </div>
+    </div>
+
+
+    <div class="row">
+    <div class="input-group">
+        <span class="input-group-text" id="">Your Name</span>
+      <input type="text" class="form-control" (input)="onUpdateChange($event)" [value]="inputText">
+    </div>
+    </div>
+    <div class="row">
+      <p>{{inputText}}</p>
+    </div>
+
+    <div class="row">
+      <div class="input-group">
+        <button class="btn btn-warning" (click)="onClickChange()">{{BtnText}}</button>
+
+      </div>
+      </div>
+
+</div>
+<section class="content">
+  <div class="container">
+    <app-home-table></app-home-table>
+  </div>
+</section>
+
