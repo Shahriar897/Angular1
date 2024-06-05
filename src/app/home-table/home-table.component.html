@@ -11,142 +11,23 @@
       />
     </div>
     <br />
-    <button class="btn btn-sm btn-info my-3" (click)="toggleFilter()">Filter</button>
+    <button class="btn btn-sm btn-info my-3" (click)="toggleFilter()">
+      Filter
+    </button>
+
     <div class="row" [hidden]="isHidden">
-      <div class="row">
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Field Select</h5>
-              <select
-                #field
-                class="form-select"
-                aria-label="Default select example"
-                (change)="onFieldSelected(field.value)"
-              >
-                <option selected disabled>Click Here to Choose a Field...</option>
-                <option value="name">Name</option>
-                <option value="fatherName">Father's Name</option>
-                <option value="motherName">Mother's Name</option>
-                <option value="address">Address</option>
-                <option value="phone">Phone</option>
-                <option value="email">email</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <select
-                #operator
-                class="form-select"
-                aria-label="Default select example"
-                (change)="onOperatorSelected(operator.value)"
-              >
-                <option value="isOperator">Is</option>
-                <option value="isNotOperator">Is Not</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <input
-        type="text"
-        id="search"
-        (input)="searchFilter($event)"
-        placeholder="Search"
-        class="form-control"
-      />
-            </div>
-          </div>
-        </div>
+      <div *ngFor="let appendDiv of appendDivs; index as i" class="my-2">
+        <app-filter-item
+          [handleSearch]="searchFilter.bind(this)"
+          [onFieldSelected]="onFieldSelected.bind(this)"
+          [onOperatorSelected]="onOperatorSelected.bind(this)"
+        />
       </div>
-      <div *ngFor="let appendDiv of appendDivs">
-        <div class="row" [innerHTML]="appendDiv"></div>
-      </div>
-      <!-- <div class="row my-2">
-      <div class="col" [hidden]="hiddenName">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Name</h5>
-            <select class="form-select">
-              <option *ngFor="let person of filterList">
-                {{ person.name }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="col" [hidden]="hiddenFatherName">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Father's Name</h5>
-            <select class="form-select" aria-label="Default select example">
-              <option *ngFor="let person of filterList">
-                {{ person.fatherName }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="col" [hidden]="hiddenMotherName">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Mother's Name</h5>
-            <select class="form-select" aria-label="Default select example">
-              <option *ngFor="let person of filterList">
-                {{ person.motherName }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="col" [hidden]="hiddenAddress">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Address</h5>
-            <select class="form-select" aria-label="Default select example">
-              <option *ngFor="let person of filterList">
-                {{ person.address }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="col" [hidden]="hiddenPhone">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Phone</h5>
-            <select class="form-select" aria-label="Default select example">
-              <option *ngFor="let person of filterList">
-                {{ person.phone }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="col" [hidden]="hiddenEmail">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Email</h5>
-            <select class="form-select" aria-label="Default select example">
-              <option *ngFor="let person of filterList">
-                {{ person.email }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>-->
       <div class="row">
         <div class="col-2">
           <button class="btn btn-success btn-sm m-2" (click)="onAddBtn()">
             + Add
           </button>
-
         </div>
       </div>
     </div>
@@ -185,12 +66,14 @@
       <div class="row">
         <div class="card">
           <div class="card-header">
-            <h2 style="text-align: center;">Form submit</h2>
+            <h2 style="text-align: center">Form submit</h2>
           </div>
           <div class="card-body">
             <form [formGroup]="userForm" (submit)="userSubmit()">
               <div class="row my-3">
-                <label for="name" class="col-md-4"  style="text-align: right">Name</label>
+                <label for="name" class="col-md-4" style="text-align: right"
+                  >Name</label
+                >
                 <div class="col-md-8">
                   <input
                     type="text"
@@ -202,7 +85,12 @@
                 </div>
               </div>
               <div class="row my-3">
-                <label for="fatherName" class="col-md-4"  style="text-align: right">Father's Name</label>
+                <label
+                  for="fatherName"
+                  class="col-md-4"
+                  style="text-align: right"
+                  >Father's Name</label
+                >
                 <div class="col-md-8">
                   <input
                     type="text"
@@ -214,7 +102,12 @@
                 </div>
               </div>
               <div class="row my-3">
-                <label for="motherName" class="col-md-4"  style="text-align: right">Mother's Name</label>
+                <label
+                  for="motherName"
+                  class="col-md-4"
+                  style="text-align: right"
+                  >Mother's Name</label
+                >
                 <div class="col-md-8">
                   <input
                     type="text"
@@ -226,7 +119,9 @@
                 </div>
               </div>
               <div class="row my-3">
-                <label for="address" class="col-md-4"  style="text-align: right">Address</label>
+                <label for="address" class="col-md-4" style="text-align: right"
+                  >Address</label
+                >
                 <div class="col-md-8">
                   <input
                     type="text"
@@ -238,7 +133,9 @@
                 </div>
               </div>
               <div class="row my-3">
-                <label for="phone" class="col-md-4" style="text-align: right">Phone</label>
+                <label for="phone" class="col-md-4" style="text-align: right"
+                  >Phone</label
+                >
                 <div class="col-md-8">
                   <input
                     type="text"
@@ -250,7 +147,9 @@
                 </div>
               </div>
               <div class="row my-3">
-                <label for="email" class="col-md-4" style="text-align: right">Email</label>
+                <label for="email" class="col-md-4" style="text-align: right"
+                  >Email</label
+                >
                 <div class="col-md-8">
                   <input
                     type="text"
@@ -262,16 +161,14 @@
                 </div>
               </div>
               <div class="my-4" style="text-align: center">
-                <button class="btn btn-primary btn-block" type="submit">Submit</button>
-            </div>
+                <button class="btn btn-primary btn-block" type="submit">
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
         </div>
-        <div class="my-5">
-
-        </div>
-
-
+        <div class="my-5"></div>
       </div>
     </section>
   </div>

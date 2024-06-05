@@ -1,75 +1,30 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { FormControl,FormGroup,ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FilterComponent } from '../filter/filter.component';
+import { FilterItemComponent } from '../filter-item/filter-item.component';
 
 @Component({
   selector: 'app-home-table',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule,ReactiveFormsModule,FilterComponent],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FilterComponent,
+    FilterItemComponent,
+  ],
   templateUrl: './home-table.component.html',
   styleUrl: './home-table.component.css',
 })
 export class HomeTableComponent {
-
-
   ngOnInit() {
     this.filterList = this.personList;
   }
-  searchText:any;
-  htmlDiv = `<div class="row">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Field Select</h5>
-        <select
-          #field
-          class="form-select"
-          aria-label="Default select example"
-          (change)="onFieldSelected(field.value)"
-        >
-          <option selected disabled>Click Here to Choose a Field...</option>
-          <option value="name">Name</option>
-          <option value="fatherName">Father's Name</option>
-          <option value="motherName">Mother's Name</option>
-          <option value="address">Address</option>
-          <option value="phone">Phone</option>
-          <option value="email">email</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <select
-          #operator
-          class="form-select"
-          aria-label="Default select example"
-          (change)="onOperatorSelected(operator.value)"
-        >
-          <option value="isOperator">Is</option>
-          <option value="isNotOperator">Is Not</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <input
-  type="text"
-  id="search"
-  (input)="searchFilter($event)"
-  placeholder="Search"
-  class="form-control"
-/>
-      </div>
-    </div>
-  </div>
-</div>`
+  searchText: any;
 
   personList = [
     {
@@ -866,20 +821,24 @@ export class HomeTableComponent {
     },
   ];
 
-  appendDivs : any = []
+  appendDivs: any = [1];
 
-  filterList: any[]= [];
+  filterList: any[] = [];
 
   searchPersonList = '';
   searchKey(e: any) {
     const searchText = e.target.value;
     for (let i = 0; i < searchText.length; i++) {
-      this.filterList = this.personList.filter(item => item.name.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
+      this.filterList = this.personList.filter((item) =>
+        item.name
+          .toLowerCase()
+          .startsWith(searchText.substring(0, i + 1).toLowerCase())
+      );
     }
   }
 
-  optionSelected:any;
-  isHidden= true;
+  optionSelected: any;
+  isHidden = true;
   hiddenName = true;
   hiddenFatherName = true;
   hiddenMotherName = true;
@@ -887,21 +846,15 @@ export class HomeTableComponent {
   hiddenPhone = true;
   hiddenEmail = true;
   toggleFilter() {
-    if(this.isHidden== true)
-      this.isHidden = false;
-    else
-      this.isHidden = true;
+    this.isHidden = !this.isHidden;
   }
-  onSelected(value:string)
-  {
+  onSelected(value: string) {
     this.optionSelected = value;
   }
-  onAddBtn()
-  {
-
-    this.appendDivs.push(this.htmlDiv);
+  onAddBtn() {
+    this.appendDivs.push(1);
   }
-  onClearBtn(){
+  onClearBtn() {
     this.hiddenName = true;
     this.hiddenFatherName = true;
     this.hiddenMotherName = true;
@@ -910,162 +863,182 @@ export class HomeTableComponent {
     this.hiddenEmail = true;
   }
   userForm = new FormGroup({
-    id:new FormControl(1),
-    name: new FormControl(""),
-    fatherName: new FormControl(""),
-    motherName: new FormControl(""),
-    address: new FormControl(""),
-    phone: new FormControl(""),
-    email: new FormControl(""),
+    id: new FormControl(1),
+    name: new FormControl(''),
+    fatherName: new FormControl(''),
+    motherName: new FormControl(''),
+    address: new FormControl(''),
+    phone: new FormControl(''),
+    email: new FormControl(''),
   });
 
-  userSubmit()
-  {
+  searchParams = new FormArray([]);
+
+  filterForm = new FormGroup({
+    fieldName: new FormControl(''),
+    isOrNot: new FormControl(true),
+    fieldValue: new FormControl(''),
+  });
+
+  userSubmit() {
     let listLength = this.personList.length - 1;
-    let userId =Number(this.personList.length) + 1;
+    let userId = Number(this.personList.length) + 1;
 
-
-        this.personList[listLength].id = userId;
-        this.personList[listLength].name = this.userForm.value.name ?? "";
-        this.personList[listLength].fatherName = this.userForm.value.fatherName ?? "";
-        this.personList[listLength].motherName = this.userForm.value.motherName ?? "";
-        this.personList[listLength].address= this.userForm.value.address ?? "";
-        this.personList[listLength].phone = this.userForm.value.phone ?? "";
-        this.personList[listLength].email = this.userForm.value.email ?? "";
-
+    this.personList[listLength].id = userId;
+    this.personList[listLength].name = this.userForm.value.name ?? '';
+    this.personList[listLength].fatherName =
+      this.userForm.value.fatherName ?? '';
+    this.personList[listLength].motherName =
+      this.userForm.value.motherName ?? '';
+    this.personList[listLength].address = this.userForm.value.address ?? '';
+    this.personList[listLength].phone = this.userForm.value.phone ?? '';
+    this.personList[listLength].email = this.userForm.value.email ?? '';
   }
-  operatorField : string = "";
-  operatorValue: string = "isOperator";
-  onOperatorSelected(value:string){
-    this.operatorValue = value;
+  operatorField: string = '';
+  operatorValue: string = 'isOperator';
 
-  }
-  onFieldSelected(value:string){
+  onFieldSelected(value: string) {
     this.operatorField = value;
   }
-  searchFilter(e : any)
-  {
+  onOperatorSelected(value: string) {
+    this.operatorValue = value;
+  }
+
+  searchFilter(e: any) {
     let searchText = e.target.value;
-    if(this.operatorField === "name")
-      {
-        if(this.operatorValue === "isOperator")
-          {
-
-            for (let i = 0; i < searchText.length; i++) {
-              this.filterList = this.personList.filter(item => item.name.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-            }
-          }
-          else if(this.operatorValue === "isNotOperator"){
-            for (let i = 0; i < searchText.length; i++) {
-              this.filterList = this.personList.filter(item => !item.name.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-
-            }
-            if(searchText == "")
-              {
-                this.filterList= this.personList;
-              }
-          }
-      }
-    else if(this.operatorField === "fatherName")
-        {
-          if(this.operatorValue === "isOperator")
-            {
-
-              for (let i = 0; i < searchText.length; i++) {
-                this.filterList = this.personList.filter(item => item.fatherName.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-              }
-            }
-            else if(this.operatorValue === "isNotOperator"){
-              for (let i = 0; i < searchText.length; i++) {
-                this.filterList = this.personList.filter(item => !item.fatherName.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-
-              }
-              if(searchText == "")
-                {
-                  this.filterList= this.personList;
-                }
-            }
+    console.log(searchText);
+    if (this.operatorField === 'name') {
+      if (this.operatorValue === 'isOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter((item) =>
+            item.name
+              .toLowerCase()
+              .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
         }
-    else  if(this.operatorField === "motherName")
-          {
-            if(this.operatorValue === "isOperator")
-              {
-
-                for (let i = 0; i < searchText.length; i++) {
-                  this.filterList = this.personList.filter(item => item.motherName.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-                }
-              }
-              else if(this.operatorValue === "isNotOperator"){
-                for (let i = 0; i < searchText.length; i++) {
-                  this.filterList = this.personList.filter(item => !item.motherName.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-
-                }
-                if(searchText == "")
-                  {
-                    this.filterList= this.personList;
-                  }
-              }
-          }
-    else  if(this.operatorField === "address")
-            {
-              if(this.operatorValue === "isOperator")
-                {
-
-                  for (let i = 0; i < searchText.length; i++) {
-                    this.filterList = this.personList.filter(item => item.address.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-                  }
-                }
-                else if(this.operatorValue === "isNotOperator"){
-                  for (let i = 0; i < searchText.length; i++) {
-                    this.filterList = this.personList.filter(item => !item.address.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-
-                  }
-                  if(searchText == "")
-                    {
-                      this.filterList= this.personList;
-                    }
-                }
-            }
-    else  if(this.operatorField === "phone")
-              {
-                if(this.operatorValue === "isOperator")
-                  {
-
-                    for (let i = 0; i < searchText.length; i++) {
-                      this.filterList = this.personList.filter(item => item.phone.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-                    }
-                  }
-                  else if(this.operatorValue === "isNotOperator"){
-                    for (let i = 0; i < searchText.length; i++) {
-                      this.filterList = this.personList.filter(item => !item.phone.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-
-                    }
-                    if(searchText == "")
-                      {
-                        this.filterList= this.personList;
-                      }
-                  }
-              }
-      else  if(this.operatorField === "email")
-                {
-                  if(this.operatorValue === "isOperator")
-                    {
-
-                      for (let i = 0; i < searchText.length; i++) {
-                        this.filterList = this.personList.filter(item => item.email.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-                      }
-                    }
-                    else if(this.operatorValue === "isNotOperator"){
-                      for (let i = 0; i < searchText.length; i++) {
-                        this.filterList = this.personList.filter(item => !item.email.toLowerCase().startsWith(searchText.substring(0, i + 1).toLowerCase()));
-
-                      }
-                      if(searchText == "")
-                        {
-                          this.filterList= this.personList;
-                        }
-                    }
-                }
+      } else if (this.operatorValue === 'isNotOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter(
+            (item) =>
+              !item.name
+                .toLowerCase()
+                .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+        if (searchText == '') {
+          this.filterList = this.personList;
+        }
+      }
+    } else if (this.operatorField === 'fatherName') {
+      if (this.operatorValue === 'isOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter((item) =>
+            item.fatherName
+              .toLowerCase()
+              .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+      } else if (this.operatorValue === 'isNotOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter(
+            (item) =>
+              !item.fatherName
+                .toLowerCase()
+                .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+        if (searchText == '') {
+          this.filterList = this.personList;
+        }
+      }
+    } else if (this.operatorField === 'motherName') {
+      if (this.operatorValue === 'isOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter((item) =>
+            item.motherName
+              .toLowerCase()
+              .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+      } else if (this.operatorValue === 'isNotOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter(
+            (item) =>
+              !item.motherName
+                .toLowerCase()
+                .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+        if (searchText == '') {
+          this.filterList = this.personList;
+        }
+      }
+    } else if (this.operatorField === 'address') {
+      if (this.operatorValue === 'isOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter((item) =>
+            item.address
+              .toLowerCase()
+              .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+      } else if (this.operatorValue === 'isNotOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter(
+            (item) =>
+              !item.address
+                .toLowerCase()
+                .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+        if (searchText == '') {
+          this.filterList = this.personList;
+        }
+      }
+    } else if (this.operatorField === 'phone') {
+      if (this.operatorValue === 'isOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter((item) =>
+            item.phone
+              .toLowerCase()
+              .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+      } else if (this.operatorValue === 'isNotOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter(
+            (item) =>
+              !item.phone
+                .toLowerCase()
+                .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+        if (searchText == '') {
+          this.filterList = this.personList;
+        }
+      }
+    } else if (this.operatorField === 'email') {
+      if (this.operatorValue === 'isOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter((item) =>
+            item.email
+              .toLowerCase()
+              .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+      } else if (this.operatorValue === 'isNotOperator') {
+        for (let i = 0; i < searchText.length; i++) {
+          this.filterList = this.personList.filter(
+            (item) =>
+              !item.email
+                .toLowerCase()
+                .startsWith(searchText.substring(0, i + 1).toLowerCase())
+          );
+        }
+        if (searchText == '') {
+          this.filterList = this.personList;
+        }
+      }
+    }
   }
 }
-
